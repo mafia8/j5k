@@ -1,25 +1,19 @@
 <?
-namespace name1\name2; // чтобы выполнилось assert 1
 
-/*
-Fatal error: Cannot mix bracketed namespace declarations with unbracketed
-namespace declarations in 1.php on line 10
-*/
+namespace Pikabu93\Misc;
 
-use core\lib\{prin as helper}; // трейт
+use Core\Lib\{Test87 as helper};
 
-  class me {
-    // функцию
-    use helper {test as public __tostring;}
-  }
+class JobSeeker {
+  use helper {test as public __tostring;}
+}
 
-namespace core\lib {
-  trait prin {
+namespace Core\Lib {
+  trait Test87 {
     private function test() {
       return static::class;
     }
   }
 }
-echo (string) new me();
-echo "\n";
-echo me::class;
+
+assert((string)new JobSeeker() === JobSeeker::class);
